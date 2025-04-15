@@ -1,0 +1,15 @@
+apiVersion: v1 #kubernetes API version
+kind: Service  #kubernetes resource kind we are creating
+metadata:      #metadata of the resource kind we are creating
+  name: springboot-k8s-service
+spec:
+  selector:
+    app: springboot-k8s   #service selector app name should be same as deployment selector app nam in yaml
+  ports:
+    - protocol: "TCP"
+      port: 9090           #port that the service is running on in the cluster
+      targetPort: 9090     #port exposed by the service
+  type: NodePort        #type of the service (in NodePort we can acces our application using node ip and port)
+
+  #Service types in k8s
+  #-NodePort -ClusterIp -LoadBalancer      
